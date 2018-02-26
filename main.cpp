@@ -11,7 +11,7 @@
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
  *   ( http://www.gnu.org/licenses/gpl-3.0.en.html )                       *
- *									   *
+ *									                                                *
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
@@ -133,8 +133,8 @@ int evaluate(const char* rpn)
 }
 
 //=============================================================
-// Shunting-Yard
-// copyied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
+// Classical approach: Shunting-Yard parsing -> rpn -> evaluation
+// parsing copied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
 
 // get weight of operators as per precedence
 // higher weight given to operators with higher precedence
@@ -223,7 +223,7 @@ void infix2postfix(const char infix[], char postfix[], int isize) {
 
 
 //=============================================================
-// rpn in place evaluation (C-like character strings)
+// new rpn-string creating + evaluation (C-like character strings)
 
 //--------------------------------------------------------------
 void _rpn_(const char* str, char* _end, int indexops, char* result, int* resultit)
