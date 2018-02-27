@@ -123,7 +123,6 @@ int evaluate(const char* rpn)
           st.top() *= ival;
           break;
        case '/':
-          //if (dval == 0)  { strncpy(serror, "exception: division by zero", LSTR); return 0.;}
           st.top() /= ival;
           break;
        }
@@ -134,7 +133,7 @@ int evaluate(const char* rpn)
 
 //=============================================================
 // Classical approach: Shunting-Yard parsing -> rpn -> evaluation
-// parsing copied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
+// copied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
 
 // get weight of operators as per precedence
 // higher weight given to operators with higher precedence
@@ -276,7 +275,7 @@ int evaluate(const int left, const int right, const char ch)
 }
 
 //--------------------------------------------------------------
-int ast_inplace(const string& str, int start, int _end, int indexops)
+int evaluate_inplace(const string& str, int start, int _end, int indexops)
 {
       if (start + 1 == _end) return str[start] - '0';
 
@@ -286,13 +285,13 @@ int ast_inplace(const string& str, int start, int _end, int indexops)
          auto const& ops = operators_arrays[jj];
          position = findLRBOperatorIn(ops, str, start, _end);
          if (position != 0) {
-            return evaluate(ast_inplace(str, start, position,  jj),
-                            ast_inplace(str, position+1, _end, jj+1),
+            return evaluate(evaluate_inplace(str, start, position,  jj),
+                            evaluate_inplace(str, position+1, _end, jj+1),
                             str[position]);
          }
       }
 
-      return ast_inplace(str, ++start, --_end, 0);
+      return evaluate_inplace(str, ++start, --_end, 0);
 }
 
 
@@ -422,25 +421,25 @@ int main(/*int argc, char* argv[]*/)
    strncpy(infix, input_expression1, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      ast_inplace(infix, 0, sizeinfix, 0);
+      evaluate_inplace(infix, 0, sizeinfix, 0);
    }
 
    strncpy(infix, input_expression2, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      ast_inplace(infix, 0, sizeinfix, 0);
+      evaluate_inplace(infix, 0, sizeinfix, 0);
    }
 
    strncpy(infix, input_expression3, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      ast_inplace(infix, 0, sizeinfix, 0);
+      evaluate_inplace(infix, 0, sizeinfix, 0);
    }
 
    strncpy(infix, input_expression4, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      ast_inplace(infix, 0, sizeinfix, 0);
+      evaluate_inplace(infix, 0, sizeinfix, 0);
    }
 
   ticks = clock() - ticks;
