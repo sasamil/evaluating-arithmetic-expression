@@ -1,7 +1,7 @@
 # evaluating-arithmetic-expression
 New approach to the evaluating simple arithmetic expressions. Widely applicable, scalable and fast. Performance comparison with the classical approach.
 
-This example demonstrate evaluations of simple arithmetic expressions. It has been inspired by the algorithm which is explained in my <a href="https://github.com/sasamil/parsing-arithmetic-expression">Haskell example</a>. 
+This example demonstrate evaluations of simple arithmetic expressions. It is inspired by the algorithm which has been explained in my <a href="https://github.com/sasamil/parsing-arithmetic-expression">Haskell example</a>. 
 
 In this example, the performances have been roughly compared. (a) Classical approach vs. (b) new-algorithm-1 vs. (c) new-algorithm-2. In other words: (Shunting-Yard -> rpn -> evaluation) vs. (new-algorithm -> rpn -> evaluation) -> vs. (new-algorithm -> in-place evaluation). It turns out that (b) is faster than (a), (c) is faster than (b). Moreover, (c) is about 40-50% faster than (a). By the way, the corectness of results and new algorithm in general, has been thoroughly unit-tested.
 
