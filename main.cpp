@@ -21,7 +21,6 @@
 #include <iostream>
 #include <vector>
 #include <stack>
-#include <algorithm>
 #include <cstring>
 
 #include <ctime>
@@ -50,27 +49,6 @@ inline bool isOperatorFrom(const Operators& ops, const char ch) {
       if(ch == *it) return true;
 
    return false;
-}
-
-//--------------------------------------------------------------
-int findLRBOperatorIn(const Operators& ops, const string& str, int start, int _end)
-{
-   int iRParentheses = 0; // Number of encountered right parentheses.
-   while (start < _end--) {
-      const char ch = str[_end];
-      switch (ch) {
-      case ')':
-         iRParentheses++;
-         break;
-      case '(':
-         if (--iRParentheses < 0)
-         break;
-      default:
-         if (iRParentheses == 0 && isOperatorFrom(ops, ch)) return _end;
-      }
-   }
-
-   return 0; // No operator has been found.
 }
 
 //--------------------------------------------------------------
@@ -105,7 +83,7 @@ int evaluate(const char* rpn)
     for (int ii = 0; ii < length; ii++) {
        const char ch = rpn[ii];
        if (ch >= '0' && ch <= '9') { // digit character
-          st.push(ch - '0'); // st.push(ch-48)
+          st.push(ch - '0');
           continue;
        }
 
@@ -133,7 +111,7 @@ int evaluate(const char* rpn)
 
 //=============================================================
 // Classical approach: Shunting-Yard parsing -> rpn -> evaluation
-// copied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
+// parsing copied from: http://www.csegeek.com/csegeek/view/tutorials/algorithms/stacks_queues/stk_que_part5.php
 
 // get weight of operators as per precedence
 // higher weight given to operators with higher precedence
@@ -222,7 +200,7 @@ void infix2postfix(const char infix[], char postfix[], int isize) {
 
 
 //=============================================================
-// new algorithm rpn-string creating + evaluation (C-like character strings)
+// new rpn-string creating + evaluation (C-like character strings)
 
 //--------------------------------------------------------------
 void _rpn_(const char* str, char* _end, int indexops, char* result, int* resultit)
@@ -260,10 +238,10 @@ inline void rpn_make(char* str, const int length, char* result)
 
 
 //=============================================================
-// new algorithm, in place evaluation
+// ast-like, in place evaluation
 
 //--------------------------------------------------------------
-int evaluate(const int left, const int right, const char ch)
+int apply_operator(const int left, const int right, const char ch)
 {
    switch (ch) {
       case '+': return left + right;
@@ -275,23 +253,23 @@ int evaluate(const int left, const int right, const char ch)
 }
 
 //--------------------------------------------------------------
-int evaluate_inplace(const string& str, int start, int _end, int indexops)
+//int eval_inplace(const string& str, int start, int _end, int indexops)
+int eval_inplace(const char* start, char* _end, int indexops)
 {
-      if (start + 1 == _end) return str[start] - '0';
+   if (start + 1 == _end) return *start - '0';
 
-      // Search for an operator (with different precedence) and make node for the matching one
-      int position = 0;
-      for (int jj = indexops; jj < NUM_PRECEDENCES; jj++) {
-         auto const& ops = operators_arrays[jj];
-         position = findLRBOperatorIn(ops, str, start, _end);
-         if (position != 0) {
-            return evaluate(evaluate_inplace(str, start, position,  jj),
-                            evaluate_inplace(str, position+1, _end, jj+1),
-                            str[position]);
-         }
+   // Search for an operator (with different precedence) and make node for the matching one
+   for (int jj = indexops; jj < NUM_PRECEDENCES; jj++) {
+      auto const& ops = operators_arrays[jj];
+      char* position = findOperatorIn(ops, start, _end);
+      if (position != 0) {
+         return apply_operator(eval_inplace(start, position,  jj),
+                               eval_inplace(position+1, _end, jj+1),
+                               *position);
       }
+   }
 
-      return evaluate_inplace(str, ++start, --_end, 0);
+   return eval_inplace(++start, --_end, 0);
 }
 
 
@@ -303,6 +281,10 @@ int main(/*int argc, char* argv[]*/)
    const char* input_expression2 = "8*(1*(2+3*(4-5)+6)-7)+5";
    const char* input_expression3 = "(1+2*8-3)/(3-4-5)*(6-7*8/3+0)";
    const char* input_expression4 = "1+2*3-4*6/5+7*8/9+0";
+
+   char infix[LSTR];
+   char postfix[LSTR];
+   int sizeinfix;
 
    tm *local; //*gmt;
    time_t now, oldtime, elapsed;
@@ -318,10 +300,10 @@ int main(/*int argc, char* argv[]*/)
    oldtime = now;
    ticks = clock();
 
-   char infix[LSTR];
-   char postfix[LSTR];
+   //char infix[LSTR];
+   //char postfix[LSTR];
    strncpy(infix, input_expression1, LSTR);
-   int sizeinfix = strlen(infix);
+   sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
       infix2postfix(infix, postfix, sizeinfix);
       evaluate(postfix);
@@ -421,25 +403,25 @@ int main(/*int argc, char* argv[]*/)
    strncpy(infix, input_expression1, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      evaluate_inplace(infix, 0, sizeinfix, 0);
+      eval_inplace(infix, infix+sizeinfix, 0);
    }
 
    strncpy(infix, input_expression2, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      evaluate_inplace(infix, 0, sizeinfix, 0);
+      eval_inplace(infix, infix+sizeinfix, 0);
    }
 
    strncpy(infix, input_expression3, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      evaluate_inplace(infix, 0, sizeinfix, 0);
+      eval_inplace(infix, infix+sizeinfix, 0);
    }
 
    strncpy(infix, input_expression4, LSTR);
    sizeinfix = strlen(infix);
    for (int ii=0; ii < 10000; ii++) {
-      evaluate_inplace(infix, 0, sizeinfix, 0);
+      eval_inplace(infix, infix+sizeinfix, 0);
    }
 
   ticks = clock() - ticks;
