@@ -254,7 +254,6 @@ int apply_operator(const int left, const int right, const char ch)
 }
 
 //--------------------------------------------------------------
-//int eval_inplace(const string& str, int start, int _end, int indexops)
 int eval_inplace(const char* start, char* _end, int indexops)
 {
    if (start + 1 == _end) return *start - '0';
