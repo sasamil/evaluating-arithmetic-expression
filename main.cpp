@@ -239,7 +239,7 @@ inline void rpn_make(char* str, const int length, char* result)
 
 
 //=============================================================
-// ast-like, in place evaluation
+// new algorithm, in place evaluation
 
 //--------------------------------------------------------------
 int apply_operator(const int left, const int right, const char ch)
@@ -391,7 +391,7 @@ int main(/*int argc, char* argv[]*/)
    cout << endl;
 
 //-----------------------------
-// ast-like in-place evaluation
+// new algorithm in-place evaluation
   now = time(NULL);
   local = localtime(&now);
   cout << "new in-place evaluation" << endl;
