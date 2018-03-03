@@ -74,7 +74,7 @@ char* findOperatorIn(const Operators& ops, const char* str, char* _end)
 }
 
 //--------------------------------------------------------------
-// External, wrapping rpn function. Top-most post-order reordering.
+// evaluate expression in post-order (rpn) form
 int evaluate(const char* rpn)
 {
     stack<int> st;
