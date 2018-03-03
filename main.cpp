@@ -222,7 +222,7 @@ void infix2postfix(const char infix[], char postfix[], int isize) {
 
 
 //=============================================================
-// new rpn-string creating + evaluation (C-like character strings)
+// new algorithm rpn-string creating + evaluation (C-like character strings)
 
 //--------------------------------------------------------------
 void _rpn_(const char* str, char* _end, int indexops, char* result, int* resultit)
@@ -260,7 +260,7 @@ inline void rpn_make(char* str, const int length, char* result)
 
 
 //=============================================================
-// ast-like, in place evaluation
+// new algorithm, in place evaluation
 
 //--------------------------------------------------------------
 int evaluate(const int left, const int right, const char ch)
