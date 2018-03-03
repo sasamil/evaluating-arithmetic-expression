@@ -52,6 +52,7 @@ inline bool isOperatorFrom(const Operators& ops, const char ch) {
 }
 
 //--------------------------------------------------------------
+// find an operator in 'ops' searching from right to left
 char* findOperatorIn(const Operators& ops, const char* str, char* _end)
 {
    int iRParentheses = 0; // Number of encountered right parentheses.
