@@ -1,7 +1,7 @@
 # evaluating-arithmetic-expression
 New approach to the evaluating simple arithmetic expressions. Performance comparison with the classical approach.
 
-This example demonstrate evaluations of simple arithmetic expressions. It is inspired by the algorithm which has been explained in my Haskell example - <a href="https://github.com/sasamil/parsing-arithmetic-expression">parsing-arithmetic-expression</a>. 
+This example demonstrate evaluations of simple arithmetic expressions. It is inspired by the algorithm which has been explained in <a href="https://github.com/sasamil/parsing-arithmetic-expression">parsing-arithmetic-expression</a>. 
 
 In this example however, the performances have been roughly compared.<br>(a) Classical approach&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(b) new-algorithm-1&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(c) new-algorithm-2
 
