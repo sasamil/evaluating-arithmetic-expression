@@ -1,7 +1,7 @@
 # Evaluating arithmetic expressions - new algorithm (zyx)
 New approach to the arithmetic expressions evaluating. Performance comparison with the classical approach.
 
-This example demonstrate evaluations of simple arithmetic expressions. It is inspired by the algorithm which has been explained in the <a href="https://github.com/sasamil/New-algorithm-for-parsing-arithmetic-expression">New-algorithm-for-parsing-arithmetic-expression</a> repository. 
+This example demonstrate evaluations of simple arithmetic expressions. It is inspired by the algorithm which has been explained in the <a href="https://github.com/sasamil/New-algorithm-for-parsing-arithmetic-expression">New-algorithm-for-parsing-arithmetic-expression</a> repository. (Practically, it's the same algorithm just applied to evaluation.)
 
 In this example however, the performances have been roughly compared.<br>(a) Classical approach&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(b) new-algorithm-1&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(c) new-algorithm-2
 
