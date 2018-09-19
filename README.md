@@ -5,7 +5,7 @@ This example demonstrate possible performance gains when evaluationg simple arit
 
 In this example however, the performances have been roughly compared.<br>(a) Classical approach&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(b) new-algorithm-1&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(c) new-algorithm-2
 
-In other words:<br>(Shunting-Yard -> rpn -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> rpn -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> in-place evaluation)
+In other words:<br>(Shunting-Yard -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> in-place evaluation)
 
 It turns out that (b) is faster than (a), (c) is faster than (b). Moreover, (c) is for a magnitude faster than (a).
 
