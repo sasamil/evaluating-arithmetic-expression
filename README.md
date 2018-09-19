@@ -7,6 +7,6 @@ In this example however, the performances have been roughly compared.<br>(a) Cla
 
 In other words:<br>(Shunting-Yard -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> in-place evaluation)
 
-It turns out that (b) is faster than (a), (c) is faster than (b). Moreover, (c) is for a magnitude faster than (a).
+It turns out that (b) is faster than (a), (c) is faster than (b). Moreover, <strong>(c) is for a magnitude faster than (a)</strong>.
 
 But, I would like to emphasize - in the first place, this approach is good because it is scallable. It should be very simple to add new operators and rules. I find it fairly simple, with a clear idea behind it. (Please note the simplicity of corresponding code. Note that the evaluation can be done <i>in-place</i>, without a need for intermediary data structures.)
