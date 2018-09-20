@@ -1,9 +1,9 @@
 # Evaluating arithmetic expressions - reverse recursive algorithm
 New approach to the arithmetic expressions evaluating. Performance comparison with the classical approach (Dijkstra's Shunting-Yard).
 
-This example demonstrate performance gains when evaluationg arithmetic expressions by the algorithm which has been explained in the <a href="https://github.com/sasamil/parsing-arithmetic-expression">parsing-arithmetic-expression</a> repository. Practically, that algorithm has just been implemented here and compared with the Shunting-Yard.
+This example demonstrate performance gains when evaluationg arithmetic expressions by the algorithm which has been explained in the <a href="https://github.com/sasamil/parsing-arithmetic-expression">parsing-arithmetic-expression</a> repository.
 
-These performance comparisons have been made here:<br>(a) Classical approach&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(b) new-algorithm-1&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(c) new-algorithm-2
+So, these performance comparisons have been made here:<br>(a) Classical approach&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(b) new-algorithm-1&nbsp;&nbsp;&nbsp;vs.&nbsp;&nbsp;&nbsp;(c) new-algorithm-2
 
 In other words:<br>(Shunting-Yard -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbsp;(new-algorithm -> in-place evaluation)
 
