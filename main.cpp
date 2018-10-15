@@ -88,7 +88,7 @@ int evaluate(const char* rpn)
           continue;
        }
 
-       // If not a digit, then it must be an operator. Apply it!
+       // If it's not a digit, then it must be an operator. Apply it!
        int ival = st.top();
        st.pop();
        switch (ch) {
