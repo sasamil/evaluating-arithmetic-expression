@@ -9,4 +9,4 @@ In other words:<br>(Shunting-Yard -> RPN -> evaluation)&nbsp;&nbsp;vs.&nbsp;&nbs
 
 It turns out that (b) is faster than (a) and (c) is faster than (b). Moreover, <strong>(c) is for a magnitude faster than (a)</strong>.
 
-But, I would like to emphasize - I find this new approach good because it is scallable! It should be very simple to add new operators and rules. I find it fairly simple, with a clear idea behind it. (Note that the evaluation can be done <i>in-place</i>, without a need for intermediary data structures.)
+However, I would like to emphasize - this new approach is good not only because it is faster. I find it scallable as well! It should be very simple to add new operators and rules. I find it fairly simple, with a clear idea behind it. (Note that the evaluation can be done <i>in-place</i>, without a need for intermediary data structures.)
